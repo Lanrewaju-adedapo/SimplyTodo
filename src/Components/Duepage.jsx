@@ -6,23 +6,20 @@ import Loader from './Loader'
 import { LuCalendarCheck, LuCalendarClock } from 'react-icons/lu'
 import Completed from '../Images/Completed.png'
 import { FiChevronRight } from 'react-icons/fi'
+import axiosInstance from '../helpers/useAxiosPrivate'
 
 const Duepage = ({ duetasks, activesection, isloading, error, open, fetchduetasks, fetchlength }) => {
 
     const [tasks, setTasks] = useState(duetasks);
-    const baseUrl = "http://localhost:50/api/Todos/CompleteTask";
+
 
     const UpdateTask = async (taskId, isCompleted) => {
         try {
-            const response = await fetch(`${baseUrl}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ taskId, isCompleted }),
+            const response = await axiosInstance.put('/api/Todos/CompleteTask', {
+                taskId, isCompleted 
             });
-            if (response.ok) {
-                console.log(await response.json());
+            if (response.status === 200) {
+                // console.log(await response.json());
                 setTasks(prevTasks =>
                     prevTasks.map(task =>
                         task.taskId === taskId ? { ...task, isCompleted } : task
@@ -79,7 +76,7 @@ const Duepage = ({ duetasks, activesection, isloading, error, open, fetchduetask
                     <h2 className='text-sm sm:text-lg font-medium text-gray-500 text-center max-w-md'>Due Tasks Will Appear Here.</h2>
                 </div>
             }
-            {(isloading === false && duetasks.length > 0) && (
+            {(isloading === false && duetasks.length > 0 && error !== 'Error fetching Due tasks:') && (
                 <div className="flex-1 overflow-y-auto bg-gray-50">
                     <div className="space-y-2 sm:space-y-3 p-4 sm:p-6 lg:p-8">
                         {duetasks.map((task) => (

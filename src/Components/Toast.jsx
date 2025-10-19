@@ -29,7 +29,7 @@ const Toast = ({ type = 'Success', title }) => {
                 <div className='flex flex-col items-start'>
                     <span className={`${style.titlecolor} font-semibold text-md leading-tight`}>{title}</span>
                 </div>
-            </div>
+            </div> 
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:50';
+const baseURL = 'http://localhost:5159';
 
 const axiosInstance = axios.create({
   baseURL,
@@ -13,10 +13,10 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   (config) => {
     const tokens = localStorage.getItem('accessToken');
-    console.log(tokens)
+    console.log('token storage', tokens)
     if (tokens) {
-      const { access } = JSON.parse(tokens);
-      config.headers['Authorization'] = `Bearer ${access}`;
+    //   const { access } = JSON.parse(tokens);
+      config.headers['Authorization'] =`Bearer ${tokens}`;
     }
     return config;
   },

@@ -5,6 +5,7 @@ import Loader from './Loader'
 import { LuCalendarCheck, LuCalendarClock } from 'react-icons/lu'
 import Completed from '../Images/Completed.png'
 import { FiChevronRight } from 'react-icons/fi'
+import axiosInstance from '../helpers/useAxiosPrivate'
 
 const Completedpage = ({ completedtasks, activesection, isloading, error, open, fetchcompletedtasks, fetchlength }) => {
 
@@ -13,15 +14,11 @@ const Completedpage = ({ completedtasks, activesection, isloading, error, open, 
     
     const UpdateTask = async (taskId, isCompleted) => {
         try {
-            const response = await fetch(`${baseUrl}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ taskId, isCompleted }),
+            const response = await axiosInstance.put('/api/Todos/CompleteTask', {
+                taskId, isCompleted
             });
-            if (response.ok) {
-                console.log(await response.json());
+            if (response.status === 200) {
+                // console.log(await response.json());
                 setTasks(prevTasks =>
                     prevTasks.map(task =>
                         task.taskId === taskId ? { ...task, isCompleted } : task

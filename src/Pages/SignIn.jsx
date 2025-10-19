@@ -10,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import ButtonLoader from '../Components/buttonLoader';
 import { MdErrorOutline } from 'react-icons/md';
 import useAuth from '../helpers/useAuth';
+import axiosInstance from '../helpers/useAxiosPrivate';
 
 
 const SignIn = () => {
@@ -49,7 +50,6 @@ const SignIn = () => {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    console.log("password: ",formData.password)
     const loginUser = async (e) => {
         setloading(true);
 

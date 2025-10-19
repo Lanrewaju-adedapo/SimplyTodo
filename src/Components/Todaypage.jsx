@@ -9,6 +9,7 @@ import { FaRegBell } from "react-icons/fa6";
 import Calendar from './Calendar';
 import { BiSolidFlag } from 'react-icons/bi';
 import emptyicon from '../Images/Caticon.png'
+import axiosInstance from '../helpers/useAxiosPrivate';
 
 const Todaypage = ({ open, activesection, TASK, loader, error, fetchtasks, fetchlength }) => {
     const [openCalendar, setOpenCalendar] = useState(false);
@@ -32,15 +33,11 @@ const Todaypage = ({ open, activesection, TASK, loader, error, fetchtasks, fetch
 
     const UpdateTask = async (taskId, isCompleted) => {
         try {
-            const response = await fetch(`${baseUrl}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ taskId, isCompleted }),
+            const response = await axiosInstance.put(`/api/Todos/CompleteTask`, {
+                taskId, isCompleted,
             });
             if (response.ok) {
-                console.log(await response.json());
+                // console.log(await response.json());
                 setTasks(prevTasks =>
                     prevTasks.map(task =>
                         task.taskId === taskId ? { ...task, isCompleted } : task
@@ -115,42 +112,29 @@ const Todaypage = ({ open, activesection, TASK, loader, error, fetchtasks, fetch
     const isDue = (dueDate) => {
         return dueDate && isBefore(new Date(dueDate), new Date());
     };
-
+    
     const addNewTask = async () => {
         try {
-            const response = await fetch(addTaskUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    title: formData.title,
-                    dueDate: formData.dueDate,
-                    priority: formData.Priority
-                }),
+
+            const response = await axiosInstance.post('/api/Todos/', {
+                title: formData.title,
+                dueDate: new Date(formData.dueDate).toISOString(),
+                priority: formData.Priority
             });
 
-            if (response.ok) {
-                const newTask = await response.json();
-                console.log('Task added:', newTask);
+            console.log('Task added:', response.data);
 
-                setTasks(prevTasks => [...prevTasks, newTask]);
-
-                setFormData({
-                    title: '',
-                    dueDate: new Date(),
-                    Priority: '',
-                });
-
-                await fetchlength();
-                await fetchtasks();
-            } else {
-                console.error('Failed to add task');
-            }
+            setTasks(prevTasks => [...prevTasks, response.data]);
+            setFormData({
+                title: '',
+                dueDate: new Date(),
+                Priority: '',
+            });
         } catch (error) {
-            console.error('Error adding task:', error);
+            console.error('Error adding task:', error.response?.data || error.message);
         }
-    }
+    };
+
 
     return (
         <div className="flex flex-1 flex-col">
@@ -292,7 +276,7 @@ const Todaypage = ({ open, activesection, TASK, loader, error, fetchtasks, fetch
                             <div key={task.taskId} className="rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-sm">
                                 <div className="flex items-center justify-between p-3 sm:p-4">
                                     <div className="flex flex-1 items-start sm:items-center space-x-3 sm:space-x-4 min-w-0">
-                                        <input type="checkbox" checked={task.isCompleted} onChange={() =>handleCompleted(task.taskId, task.isCompleted)} className="w-4 h-4 text-blue-500 border-gray-300 rounded focus:ring-blue-500 mt-0.5 sm:mt-0 flex-shrink-0"/>
+                                        <input type="checkbox" checked={task.isCompleted} onChange={() => handleCompleted(task.taskId, task.isCompleted)} className="w-4 h-4 text-blue-500 border-gray-300 rounded focus:ring-blue-500 mt-0.5 sm:mt-0 flex-shrink-0" />
                                         <div className="flex-1 min-w-0">
                                             <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4">
                                                 <span className={`text-sm sm:text-base text-gray-800 break-words ${task.isCompleted ? "line-through text-gray-500" : ""}`}>
@@ -302,9 +286,9 @@ const Todaypage = ({ open, activesection, TASK, loader, error, fetchtasks, fetch
                                                     {task.dueDate && (
                                                         <span className="flex items-center gap-1 sm:gap-2 rounded bg-gray-100 px-2 py-1 text-xs text-gray-500">
                                                             {task.isCompleted ? (
-                                                                <LuCalendarCheck color="#10B981" className="size-3 sm:size-4 flex-shrink-0"/>
+                                                                <LuCalendarCheck color="#10B981" className="size-3 sm:size-4 flex-shrink-0" />
                                                             ) : (
-                                                                <LuCalendarClock color={isDue(task.dueDate) ? "#D84315" : "#10B981"} className="size-3 sm:size-4 flex-shrink-0"/>
+                                                                <LuCalendarClock color={isDue(task.dueDate) ? "#D84315" : "#10B981"} className="size-3 sm:size-4 flex-shrink-0" />
                                                             )}
                                                             <span className="hidden sm:inline">
                                                                 {format(new Date(task.dueDate), "MMMM dd, yyyy h:mm a")}

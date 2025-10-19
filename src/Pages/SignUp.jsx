@@ -10,7 +10,7 @@ import { showCustomToast } from '../helpers/ToastContext';
 import ButtonLoader from '../Components/buttonLoader';
 
 const SignUp = () => {
-    const BASE_URL = "http://localhost:50/api/Auth"
+    const BASE_URL = "http://localhost:5159/api/Auth"
     const [seePass, setseePass] = useState(false);
     const [seeCPass, setseeCPass] = useState(false);
     const [isFocused, setIsFocused] = useState(false);
@@ -75,6 +75,7 @@ const SignUp = () => {
         }
         catch (error) {
             console.error("error adding user", error)
+            showCustomToast("error adding user", `${error}`)
         }
         finally {
             setloading(false)

@@ -9,6 +9,7 @@ import { FaRegBell } from "react-icons/fa6";
 import Calendar from './Calendar';
 import { BiSolidFlag } from 'react-icons/bi';
 import emptyicon from '../Images/Caticon.png'
+import axiosInstance from '../helpers/useAxiosPrivate';
 
 const Upcomingpage = ({ open, activesection, TASK, loader, error, fetchtasks, fetchlength }) => {
     const [openCalendar, setOpenCalendar] = useState(false);
@@ -32,15 +33,11 @@ const Upcomingpage = ({ open, activesection, TASK, loader, error, fetchtasks, fe
 
     const UpdateTask = async (taskId, isCompleted) => {
         try {
-            const response = await fetch(`${baseUrl}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ taskId, isCompleted }),
+            const response = await axiosInstance.put('/api/Todos/CompleteTask', {
+                taskId, isCompleted,
             });
-            if (response.ok) {
-                console.log(await response.json());
+            if (response.status === 200) {
+                // console.log(await response.json());
                 setTasks(prevTasks =>
                     prevTasks.map(task =>
                         task.taskId === taskId ? { ...task, isCompleted } : task
@@ -114,20 +111,14 @@ const Upcomingpage = ({ open, activesection, TASK, loader, error, fetchtasks, fe
 
     const addNewTask = async () => {
         try {
-            const response = await fetch(addTaskUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
+            const response = await axiosInstance.post('/api/Todos', {
                     title: formData.title,
-                    dueDate: formData.dueDate,
+                    dueDate: new Date(formData.dueDate).toISOString() ,
                     priority: formData.Priority
-                }),
             });
 
-            if (response.ok) {
-                const newTask = await response.json();
+            if (response.status === 200) {
+                const newTask = await response.data;
                 console.log('Task added:', newTask);
 
                 setTasks(prevTasks => [...prevTasks, newTask]);

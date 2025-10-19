@@ -9,6 +9,7 @@ import { FaRegBell } from "react-icons/fa6";
 import Calendar from './Calendar';
 import { BiSolidFlag } from 'react-icons/bi';
 import emptyicon from '../Images/Caticon.png'
+import axiosInstance from '../helpers/useAxiosPrivate';
 
 const Categoriespage = ({ categoryId, open, activesection, onTaskClick, fetchCategoryTasks, Tasks, isLoading, Error }) => {
   const [openCalendar, setOpenCalendar] = useState(false);
@@ -16,7 +17,7 @@ const Categoriespage = ({ categoryId, open, activesection, onTaskClick, fetchCat
   const calendarRef = useRef(null);
   const priorityRef = useRef(null);
   const baseUrl = "http://localhost:50/api/Todos/CompleteTask";
-  const addTaskUrl = "http://localhost:50/api/Todos/";
+  const addTaskUrl = "/api/Todos/";
   const [tasks, setTasks] = useState(Tasks);
   
 
@@ -118,24 +119,17 @@ const Categoriespage = ({ categoryId, open, activesection, onTaskClick, fetchCat
 
   const addNewTask = async () => {
     try {
-      const response = await fetch(addTaskUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
+      const response = await axiosInstance.post('/api/Todos', {
           title: formData.title,
-          dueDate: formData.dueDate,
+          dueDate: new Date(formData.dueDate).toISOString(),
           priority: formData.Priority,
           categoryId: categoryId
-        }),
       });
 
-      if (response.ok) {
-        const newTask = await response.json();
-        console.log('Task added:', newTask);
+      if (response.status === 200) {
+        console.log('Task added:', response);
 
-        setTasks(prevTasks => [...prevTasks, newTask]);
+        setTasks(prevTasks => [...prevTasks, response]);
 
         setFormData({
           title: '',
@@ -268,7 +262,7 @@ const Categoriespage = ({ categoryId, open, activesection, onTaskClick, fetchCat
           </div>
         </div>
       </div>
-      {Error === 'Error fetching tasks:' && (
+      {(Error === 'Error fetching tasks:' && isLoading === false) && (
         <div className='flex h-screen w-full flex-col items-center justify-center gap-3 px-4'>
           <img src={errorimg} alt="Error" className='size-16 sm:size-20' />
           <h2 className='text-base sm:text-lg font-medium text-gray-500 text-center'>Error Fetching Data...</h2>
