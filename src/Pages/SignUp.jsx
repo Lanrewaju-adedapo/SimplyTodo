@@ -127,26 +127,26 @@ const SignUp = () => {
                                 <MdErrorOutline className="inline" /> {errors.email.message}
                             </p>)}
                         </div>
-                        <div className='flex flex-col gap-2 relative' onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)}>
+                        <div className='relative flex flex-col gap-2' onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)}>
                             <input type={seePass ? "text" : "password"} id='password' name='password' placeholder="Password" className="w-full rounded-xl border border-gray-300 p-3 text-[16px] transition focus:ring-2 focus:ring-amber-300 focus:outline-none"
                                 {...register("password", { required: "please enter a password" })} onChange={handleInputChange} />
                             {errors.password && (<p className='mt-1 flex items-center gap-1 text-sm text-red-600'>
                                 <MdErrorOutline className="inline" /> {errors.password.message}
                             </p>)}
-                            {(isFocused === true ) && (
-                                <button type='button' className='absolute top-4 right-3 flex items-center justify-center' onMouseDown={(e) => {setseePass(!seePass); e.preventDefault();}}>
+                            {(isFocused === true) && (
+                                <button type='button' className='absolute top-4 right-3 flex items-center justify-center' onMouseDown={(e) => { setseePass(!seePass); e.preventDefault(); }}>
                                     {seePass ? <VscEye className='size-5' /> : <VscEyeClosed className='size-5' />}
                                 </button>
                             )}
                         </div>
-                        <div className='flex flex-col gap-2 relative' onFocus={() => setIsCFocused(true)} onBlur={() => setIsCFocused(false)}>
-                            <input type={seeCPass ? "text" : "password"} id='confirmpassword' name='confirmpassword' placeholder="Password Confirm" className="w-full rounded-xl border border-gray-300 p-3 text-[16px] transition focus:ring-2 focus:ring-amber-300 focus:outline-none" 
+                        <div className='relative flex flex-col gap-2' onFocus={() => setIsCFocused(true)} onBlur={() => setIsCFocused(false)}>
+                            <input type={seeCPass ? "text" : "password"} id='confirmpassword' name='confirmpassword' placeholder="Password Confirm" className="w-full rounded-xl border border-gray-300 p-3 text-[16px] transition focus:ring-2 focus:ring-amber-300 focus:outline-none"
                                 {...register("confirmpassword", { required: "please confirm password", validate: (value) => value === password || 'Passwords do not match' })} onChange={handleInputChange} />
                             {errors.confirmpassword && (<p className='mt-1 flex items-center gap-1 text-sm text-red-600'>
                                 <MdErrorOutline className="inline" /> {errors.confirmpassword.message}
                             </p>)}
                             {(isCFocused === true) && (
-                                <button type='button' className='absolute top-4 right-3 flex items-center justify-center' onMouseDown={(e) => {setseeCPass(!seeCPass); e.preventDefault();}}>
+                                <button type='button' className='absolute top-4 right-3 flex items-center justify-center' onMouseDown={(e) => { setseeCPass(!seeCPass); e.preventDefault(); }}>
                                     {seeCPass ? <VscEye className='size-5' /> : <VscEyeClosed className='size-5' />}
                                 </button>
                             )}

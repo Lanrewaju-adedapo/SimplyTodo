@@ -7,24 +7,44 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Pages\\SignUp.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\App.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\App.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Pages\\SignIn.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Pages\\SignIn.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Upcomingpage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Components\\Upcomingpage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Taskmenu.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Components\\Taskmenu.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Sidebar.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Components\\Sidebar.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Homepane.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Components\\Homepane.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Duepage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Components\\Duepage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Completedpage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Components\\Completedpage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Categoriespage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Components\\Categoriespage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Todaypage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Components\\Todaypage.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Taskmenu.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\Components\\Taskmenu.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\App.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\App.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,21 +54,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 247,
-          "SelectedChildIndex": 16,
+          "SelectedChildIndex": 21,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "App.jsx",
-              "DocumentMoniker": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\App.jsx",
-              "RelativeDocumentMoniker": "src\\App.jsx",
-              "ToolTip": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\App.jsx",
-              "RelativeToolTip": "src\\App.jsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-09-06T17:13:46.047Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{5e929736-0e81-4d52-a78e-546a1649faca}"
@@ -111,70 +118,145 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SignIn.jsx",
+              "DocumentMoniker": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Pages\\SignIn.jsx",
+              "RelativeDocumentMoniker": "src\\Pages\\SignIn.jsx",
+              "ToolTip": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Pages\\SignIn.jsx",
+              "RelativeToolTip": "src\\Pages\\SignIn.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-10-24T10:19:49.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Upcomingpage.jsx",
+              "DocumentMoniker": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Upcomingpage.jsx",
+              "RelativeDocumentMoniker": "src\\Components\\Upcomingpage.jsx",
+              "ToolTip": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Upcomingpage.jsx",
+              "RelativeToolTip": "src\\Components\\Upcomingpage.jsx",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABoAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-10-24T10:19:42.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Sidebar.jsx",
+              "DocumentMoniker": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Sidebar.jsx",
+              "RelativeDocumentMoniker": "src\\Components\\Sidebar.jsx",
+              "ToolTip": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Sidebar.jsx",
+              "RelativeToolTip": "src\\Components\\Sidebar.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-10-24T10:19:31.382Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Duepage.jsx",
+              "DocumentMoniker": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Duepage.jsx",
+              "RelativeDocumentMoniker": "src\\Components\\Duepage.jsx",
+              "ToolTip": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Duepage.jsx",
+              "RelativeToolTip": "src\\Components\\Duepage.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-10-24T10:19:20.306Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Categoriespage.jsx",
+              "DocumentMoniker": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Categoriespage.jsx",
+              "RelativeDocumentMoniker": "src\\Components\\Categoriespage.jsx",
+              "ToolTip": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Categoriespage.jsx",
+              "RelativeToolTip": "src\\Components\\Categoriespage.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-10-24T10:19:09.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "App.jsx",
+              "DocumentMoniker": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\App.jsx",
+              "RelativeDocumentMoniker": "src\\App.jsx",
+              "ToolTip": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\App.jsx",
+              "RelativeToolTip": "src\\App.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-09-06T17:13:46.047Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "SignUp.jsx",
               "DocumentMoniker": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Pages\\SignUp.jsx",
               "RelativeDocumentMoniker": "src\\Pages\\SignUp.jsx",
               "ToolTip": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Pages\\SignUp.jsx",
               "RelativeToolTip": "src\\Pages\\SignUp.jsx",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAD8AAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAEkAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
               "WhenOpened": "2025-09-06T16:54:53.395Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "Completedpage.jsx",
               "DocumentMoniker": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Completedpage.jsx",
               "RelativeDocumentMoniker": "src\\Components\\Completedpage.jsx",
               "ToolTip": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Completedpage.jsx",
               "RelativeToolTip": "src\\Components\\Completedpage.jsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
               "WhenOpened": "2025-08-21T11:20:17.394Z",
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Homepane.jsx",
               "DocumentMoniker": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Homepane.jsx",
               "RelativeDocumentMoniker": "src\\Components\\Homepane.jsx",
               "ToolTip": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Homepane.jsx",
               "RelativeToolTip": "src\\Components\\Homepane.jsx",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAB4AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAAAFoAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
               "WhenOpened": "2025-08-20T18:40:31.563Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "Taskmenu.jsx",
               "DocumentMoniker": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Taskmenu.jsx",
               "RelativeDocumentMoniker": "src\\Components\\Taskmenu.jsx",
               "ToolTip": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Taskmenu.jsx",
               "RelativeToolTip": "src\\Components\\Taskmenu.jsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJoAAABMAAAAAAAAAA==",
+              "ViewState": "AgIAAO4AAAAAAAAAAAAcwAcBAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-08-20T15:51:51.299Z"
+              "WhenOpened": "2025-08-20T15:51:51.299Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "Todaypage.jsx",
               "DocumentMoniker": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Todaypage.jsx",
               "RelativeDocumentMoniker": "src\\Components\\Todaypage.jsx",
               "ToolTip": "C:\\Users\\user\\FrontEnd\\TodoFrontEnd\\src\\Components\\Todaypage.jsx",
               "RelativeToolTip": "src\\Components\\Todaypage.jsx",
-              "ViewState": "AgIAAHgAAAAAAAAAAAAAAI0AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAGABAAAAAAAAAAAcwMwBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-08-20T13:06:31.102Z"
+              "WhenOpened": "2025-08-20T13:06:31.102Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Bookmark",

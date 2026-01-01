@@ -9,6 +9,9 @@ import { format, isBefore } from "date-fns";
 import Calendar from "./Calendar";
 import { FaRegBell } from "react-icons/fa6";
 import axiosInstance from "../helpers/useAxiosPrivate";
+import { ToastContainer, Slide, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { showCustomToast } from "../helpers/ToastContext";
 
 const Taskmenu = ({
   onclose,
@@ -55,41 +58,149 @@ const Taskmenu = ({
   };
 
   const DeleteTask = async (taskId) => {
+    // Validate inputs
+    if (!taskId) {
+      showCustomToast("Failed", "Invalid task ID");
+      return;
+    }
+
     setIsLoading(true);
     try {
       const response = await axiosInstance.delete(`/api/Todos/${taskId}`);
+
       if (response.status === 200) {
-        onclose();
+        // Call the deletion callback
         onTaskdeleted(taskId);
+
+        // Show success toast
+        showCustomToast("Success", "Task deleted successfully");
+
+        // Refresh data if functions exist
         if (typeof refetch === "function") {
           refetch();
+        }
+        if (typeof fetchlength === "function") {
           fetchlength();
         }
+
+        // Close modal/dialog
+        if (typeof onclose === "function") {
+          onclose();
+        }
       } else {
-        console.error("Failed to delete task");
+        console.error("Failed to delete task:", response.status);
+        showCustomToast("Failed", "Failed to delete task");
       }
     } catch (error) {
       console.error("Error deleting task:", error);
+
+      let errorMessage = "Error deleting task";
+      let errorStatus = "Failed";
+
+      if (error.response) {
+        const status = error.response.status;
+        const message =
+          error.response.data?.message || error.response.statusText;
+
+        // errorStatus = status.toString();
+        errorMessage = message || `Server error: ${status}`;
+
+        // Handle specific status codes
+        if (status === 401) {
+          errorMessage = "Please log in to delete tasks";
+        } else if (status === 403) {
+          errorMessage = "You don't have permission to delete this task";
+        } else if (status === 404) {
+          errorMessage = "Task not found";
+        } else if (status >= 500) {
+          errorMessage = "Server error. Please try again later.";
+        }
+      } else if (error.request) {
+        errorMessage = "No response from server. Please check your connection.";
+      } else {
+        errorMessage = error.message || "Unknown error occurred";
+      }
+
+      showCustomToast(errorStatus, errorMessage);
     } finally {
       setIsLoading(false);
     }
   };
 
   const UpdateTask = async () => {
+    // Validate form data
+    if (!formData.title || formData.title.trim() === "") {
+      showCustomToast("Failed", "Task title is required");
+      return;
+    }
+
+    if (!formData.dueDate) {
+      showCustomToast("Failed", "Due date is required");
+      return;
+    }
+
     setIsSaving(true);
     try {
-      const response = await axiosInstance.put("/api/Todos", formData );
+      const response = await axiosInstance.put("/api/Todos", {
+        ...formData,
+        title: formData.title.trim(), // Sanitize title
+      });
+
       if (response.status === 200) {
-        // console.log(await response.json());
+        // Show success toast
+        showCustomToast("Success", "Task updated successfully");
+
+        // Refresh data if functions exist
         if (typeof refetch === "function") {
           refetch();
+        }
+        if (typeof fetchlength === "function") {
           fetchlength();
         }
+
+        // Close modal/dialog
+        if (typeof onclose === "function") {
+          onclose();
+        }
       } else {
-        console.error("Failed to update task");
+        console.error("Failed to update task:", response.status);
+        showCustomToast("Failed", "Failed to update task");
       }
     } catch (error) {
       console.error("Error updating task:", error);
+
+      let errorMessage = "Error updating task";
+      let errorStatus = "Failed";
+
+      if (error.response) {
+        const status = error.response.status;
+        const message =
+          error.response.data?.message || error.response.statusText;
+
+        // errorStatus = status.toString();
+        errorMessage = message || `Server error: ${status}`;
+
+        // Handle specific status codes
+        if (status === 400) {
+          errorMessage = "Invalid task data. Please check your inputs.";
+        } else if (status === 401) {
+          errorMessage = "Please log in to update tasks";
+        } else if (status === 403) {
+          errorMessage = "You don't have permission to update this task";
+        } else if (status === 404) {
+          errorMessage = "Task not found";
+        } else if (status === 409) {
+          errorMessage = "A task with this title already exists";
+        } else if (status >= 500) {
+          errorMessage = "Server error. Please try again later.";
+        }
+      } else if (error.request) {
+        errorMessage = "No response from server. Please check your connection.";
+      } else {
+        errorMessage = error.message || "Unknown error occurred";
+      }
+
+      showCustomToast(errorStatus, errorMessage);
     } finally {
       setIsSaving(false);
     }
@@ -145,23 +256,68 @@ const Taskmenu = ({
 
   const [selected, setSelected] = useState();
   const [allCategories, setallCategories] = useState(null);
+  const [floading, setFLoading] = useState(false);
   useEffect(() => {
     const fetchCategories = async () => {
       try {
         const result = await axiosInstance.get("/api/Todos/categories");
-        const data = result.data;
-        console.log(data.data);
-        setallCategories(data.data);
-        const taskcategory = data.data.find(
-          (x) => x.categoryId === formData?.categoryId
-        );
-        setSelected(taskcategory);
+        setFLoading(true);
 
-        console.log("task category:", selected);
+        // Validate response structure
+        if (result && result.data && result.data.data) {
+          const data = result.data;
+          console.log("Categories data:", data.data);
+          setallCategories(data.data);
+
+          // Find and set selected category if categoryId exists
+          if (formData?.categoryId) {
+            const taskcategory = data.data.find(
+              (x) => x.categoryId === formData.categoryId
+            );
+            setSelected(taskcategory);
+            console.log("Task category:", taskcategory);
+          }
+        } else {
+          console.warn("Unexpected response structure:", result);
+          showCustomToast("Failed", "Invalid response format from server");
+          setallCategories([]); // Set empty array as fallback
+        }
       } catch (error) {
-        console.error("Error fetching categories:", error.message);
+        console.error("Error fetching categories:", error);
+
+        let errorMessage = "Error fetching categories";
+        let errorStatus = "Failed";
+
+        if (error.response) {
+          const status = error.response.status;
+          const message =
+            error.response.data?.message || error.response.statusText;
+
+        //   errorStatus = status.toString();
+          errorMessage = message || `Server error: ${status}`;
+
+          // Handle specific status codes
+          if (status === 401) {
+            errorMessage = "Please log in to view categories";
+          } else if (status === 403) {
+            errorMessage = "You don't have permission to view categories";
+          } else if (status >= 500) {
+            errorMessage = "Server error. Please try again later.";
+          }
+        } else if (error.request) {
+          errorMessage =
+            "No response from server. Please check your connection.";
+        } else {
+          errorMessage = error.message || "Unknown error occurred";
+        }
+
+        showCustomToast(errorStatus, errorMessage);
+        setallCategories([]); // Set empty array on error
+      } finally {
+        setFLoading(false);
       }
     };
+
     fetchCategories();
   }, [formData.categoryId]);
 
@@ -173,6 +329,25 @@ const Taskmenu = ({
 
   return (
     <div className={`w-full h-full flex flex-col`}>
+      <ToastContainer
+        style={{
+          "--toastify-color-progress-light":
+            "linear-gradient(to right, #90d4f7, #63b3ed)",
+          "--toastify-color-progress-dark":
+            "linear-gradient(to right, #90d4f7, #63b3ed)",
+          "--toastify-toast-min-height": "80px",
+        }}
+        progressStyle={{
+          background: "var(--toastify-color-progress-light)",
+          height: "3px",
+        }}
+        transition={Zoom}
+        toastClassName={() => "!min-w-full !max-w-full !w-full !p-0"}
+        bodyClassName={() => "!p-0 !m-0 !w-full !h-full"}
+        className="!w-auto !max-w-[500px]"
+        pauseOnFocusLoss={false}
+        closeButton={false}
+      />
       <div className="flex-1 overflow-y-auto">
         <div
           className="sticky top-0 z-10 flex items-center justify-between border-b border-gray-300 bg-[#f4f4f4] p-6"
@@ -324,7 +499,7 @@ const Taskmenu = ({
           </div>
         </div>
         <div
-          className="relative mr-3 ml-3 flex cursor-pointer items-center justify-between rounded-xl border border-gray-200 bg-white backdrop-opacity-50 py-4 px-6 transition-all duration-200 hover:bg-gray-50 hover:shadow-md"
+          className="relative mr-3 ml-3 flex cursor-pointer items-center justify-between rounded-xl border border-gray-200 bg-white px-6 py-4 backdrop-opacity-50 transition-all duration-200 hover:bg-gray-50 hover:shadow-md"
           onClick={() => setOpen(!open)}
         >
           <div className="flex items-center space-x-2">
@@ -334,40 +509,48 @@ const Taskmenu = ({
                   style={{ backgroundColor: selected.colorCode }}
                   className="size-3 rounded-lg"
                 ></div>
-                <span className="text-[14px] font-medium text-gray-500">
+                <span className="font-medium text-[14px] text-gray-500">
                   {selected.categoryName}
                 </span>
               </>
             ) : (
-              <span className="text-[14px] font-medium text-gray-500">
+              <span className="font-medium text-[14px] text-gray-500">
                 Category
               </span>
             )}
           </div>
-          <div className="flex gap-3 items-center">
+          <div className="flex items-center gap-3">
             <IoFolderOpenOutline className="text-lg text-gray-500" />
           </div>
           {open && (
-            <div className="absolute left-0 bottom-full z-20 mb-3 w-full max-h-60 overflow-y-auto rounded-xl border border-gray-200/80 bg-white shadow-2xl backdrop-blur-sm animate-in slide-in-from-top-2 duration-200">
-              {allCategories.map((cat) => (
-                <div
-                  key={cat.categoryId}
-                  className={`flex cursor-pointer items-center gap-3 px-4 py-3 hover:bg-gray-50 active:bg-gray-100 first:rounded-t-xl last:rounded-b-xl transition-all duration-150 ${
-                    selected?.categoryId === cat.categoryId
-                      ? "bg-blue-50 border-r-2 border-blue-500"
-                      : ""
-                  }`}
-                  onClick={() => handleCategoryChange(cat.categoryId)}
-                >
-                  <span
-                    style={{ backgroundColor: cat.colorCode }}
-                    className="h-4 w-4 rounded-full shadow-sm border border-white"
-                  />
-                  <span className="text-gray-800 font-medium">
-                    {cat.categoryName}
+            <div className="animate-in slide-in-from-top-2 absolute bottom-full left-0 z-20 mb-3 max-h-60 w-full overflow-y-auto rounded-xl border border-gray-200/80 bg-white shadow-2xl backdrop-blur-sm duration-200">
+              {allCategories?.length > 0 ? (
+                allCategories.map((cat) => (
+                  <div
+                    key={cat.categoryId}
+                    className={`flex cursor-pointer items-center gap-3 px-4 py-3 hover:bg-gray-50 active:bg-gray-100 first:rounded-t-xl last:rounded-b-xl transition-all duration-150 ${
+                      selected?.categoryId === cat.categoryId
+                        ? "bg-blue-50 border-r-2 border-blue-500"
+                        : ""
+                    }`}
+                    onClick={() => handleCategoryChange(cat.categoryId)}
+                  >
+                    <span
+                      style={{ backgroundColor: cat.colorCode }}
+                      className="h-4 w-4 rounded-full border border-white shadow-sm"
+                    />
+                    <span className="font-medium text-gray-800">
+                      {cat.categoryName}
+                    </span>
+                  </div>
+                ))
+              ) : (
+                <div className="flex items-center justify-center px-4 py-6">
+                  <span className="text-gray-500 text-sm font-medium">
+                    No categories found
                   </span>
                 </div>
-              ))}
+              )}
             </div>
           )}
         </div>

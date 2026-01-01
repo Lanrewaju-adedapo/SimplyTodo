@@ -3,6 +3,7 @@
     "",
     "\\public",
     "\\src",
+    "\\src\\api",
     "\\src\\Components",
     "\\src\\Images",
     "\\src\\Pages"
